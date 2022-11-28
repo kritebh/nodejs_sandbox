@@ -20,4 +20,4 @@ async function readEnv(filePath){
     
 }
 
-readEnv(".env").then(d=>console.log(d))
+readEnv("env").then(d=>console.log(d))
