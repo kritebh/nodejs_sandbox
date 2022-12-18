@@ -3,5 +3,8 @@
 - npm init -y
 - npm install -D tailwindcss postcss autoprefixer vite
 - npx tailwindcss init -p
+- set `content: ["*"]` in tailwind.config.js
 - set script `"start" :"vite"`
+- create main/input.css file
+- include it into html file
 - npm run start
