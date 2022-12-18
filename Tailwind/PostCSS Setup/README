@@ -1,0 +1,7 @@
+# Steps to Setup
+
+- npm init -y
+- npm install -D tailwindcss postcss autoprefixer vite
+- npx tailwindcss init -p
+- set script `"start" :"vite"`
+- npm run start
