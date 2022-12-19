@@ -2,7 +2,11 @@
 module.exports = {
   content: ["*"],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        '16': '16rem',
+        },
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 }
