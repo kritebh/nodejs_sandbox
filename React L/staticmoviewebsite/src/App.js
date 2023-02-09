@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="font-mono">
       <Header/>
-      <div className="grid grid-cols-2 gap-2 gap-y-6 p-4 justify-items-center md:grid-cols-3 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-2 gap-y-6 p-4 mb-4 justify-items-center md:grid-cols-3 lg:grid-cols-6">
       {
         movies.map(movie=>{
           return <Movie key={movie.imdbID} movie={movie}/>
