@@ -5,7 +5,9 @@ import {useState,createContext} from 'react'
 const GlobalState = createContext()
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
   const [data,setData]= useState("data from A useContext")
+  // eslint-disable-next-line no-unused-vars
   const [count,setcount]= useState(0)
 
 
