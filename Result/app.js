@@ -2,7 +2,7 @@ const axios = require("axios")
 const fs = require("fs")
 
 async function fetchResult(roll){
-    let response = await axios.get(`https://csvtu.digivarsity.online/WebApp/Result/SemesterResult.aspx?S=6+SEMESTER&T=Regular&E=Apr-May+2022&R=${roll}`)
+    let response = await axios.get(`https://csvtu.digivarsity.online/WebApp/Result/SemesterResult.aspx?S=7%20SEMESTER&E=NOV-DEC%202022&R=${roll}&T=Regular`)
     let html = response.data;
     try{
         let splittedHtml = html.split(`<span id="obtmarks">`)
