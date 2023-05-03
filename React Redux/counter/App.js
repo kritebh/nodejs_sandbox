@@ -1,13 +1,21 @@
 import React from "react"
-import {createRoot} from "react-dom/client"
+import ReactDOM from "react-dom/client"
 import Counter from "./Components/Counter"
-
+import Users from "./Components/Users"
+import { Provider } from "react-redux"
+import store from "./Store/Store"
 const App = ()=>{
-    <div>
+
+    return (
+        <Provider store={store}>
+        <div>
         <Counter/>
-    </div>
+        <Users/>
+        </div>
+        </Provider>
+     )
 }
 
-const root = createRoot(document.getElementById("root"));
+let root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App/>)
 
