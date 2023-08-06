@@ -32,17 +32,43 @@
 //   });
 // })();
 
+// const fs = require("fs/promises");
+
+// (async () => {
+//   console.time("start");
+//   let file = await fs.open("test.txt", "w");
+//   const stream = file.createWriteStream();
+//   // console.log(stream.writableHighWaterMark); //16384
+//   let buff;
+//   for (let i = 0; i < 1000; i++) {
+//     buff = Buffer.from(`${i} `,'utf-8');
+//           stream.write(buff) //this return a boolean if internal buffer is reached highWaterMark value
+//     }
+//     console.timeEnd("start")
+
+// })();
+
 const fs = require("fs/promises");
 
 (async () => {
-  console.time("start");
   let file = await fs.open("test.txt", "w");
-  const stream = file.createWriteStream();
-  let buff;  
-  for (let i = 0; i < 1000000; i++) {
-    buff = Buffer.from(`${i} `,'utf-8');
-          stream.write(buff)
-    }
-    console.timeEnd("start")
 
+  let stream = file.createWriteStream();
+
+  let i, buff;
+  function writeMany() {
+    for (i = 0; i < 10000; i++) {
+      buff = Buffer.from(`${i} `, "utf-8");
+      if (!stream.write(buff)) {
+        break;
+      }
+    }
+  }
+
+  writeMany();
+
+  stream.on("drain", () => {
+    writeMany();
+  });
+  
 })();
