@@ -55,9 +55,9 @@ const fs = require("fs/promises");
 
   let stream = file.createWriteStream();
 
-  let i, buff;
+  let i=0, buff;
   function writeMany() {
-    for (i = 0; i < 10000; i++) {
+    for (i; i < 1000000; i++) {
       buff = Buffer.from(`${i} `, "utf-8");
       if (!stream.write(buff)) {
         break;
