@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Long Polling Example</title>
+</head>
+<body>
+  <h1>Long Polling Example</h1>
+  <ul id="messages"></ul>
+  <input type="text" id="messageInput" placeholder="Type a message">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    async function pollMessages() {
+      const response = await fetch('/poll');
+      const messages = await response.json();
+      updateMessages(messages);
+      pollMessages(); // initiate the next poll
+    }
+
+    function updateMessages(newMessages) {
+      const messagesElement = document.getElementById('messages');
+      newMessages.forEach(({ message }) => {
+        const li = document.createElement('li');
+        li.textContent = message;
+        messagesElement.appendChild(li);
+      });
+    }
+
+    async function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const message = messageInput.value;
+
+      await fetch('/publish', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message }),
+      });
+
+      messageInput.value = '';
+    }
+
+    // Start the long polling when the page loads
+    pollMessages();
+  </script>
+</body>
+</html>
