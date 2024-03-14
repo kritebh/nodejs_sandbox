@@ -9,7 +9,7 @@ let clients = [];
 app.get('/poll', (req, res) => {
     const timeout = setTimeout(() => {
         res.json([]);
-    }, 30 * 1000); // 30 seconds timeout, adjust as needed
+    }, 30 * 1000); 
 
     clients.push({ res, timeout });
 });
